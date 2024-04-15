@@ -1,0 +1,335 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700");
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
+
+* {
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --font-roboto: "Roboto Slab", serif;
+  --font-raleway: "Raleway", sans-serif;
+}
+
+body {
+  font-family: var(--font-roboto);
+  background-color: #212529;
+}
+
+.app {
+  padding: 1rem;
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.app h2 {
+  display: flex;
+  display: inline-block;
+}
+h1 {
+  font-size: 3rem;
+  letter-spacing: 0.2rem;
+  background: linear-gradient(
+    180deg,
+    rgba(249, 211, 180, 1) 0%,
+    rgba(249, 211, 180, 0) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: fit-content;
+  margin: 1.5rem;
+}
+
+.search {
+  width: 50%;
+  margin: 1% 2rem;
+  font-size: 1.5rem;
+  display: flex;
+
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 3rem;
+  background: #151618;
+  -webkit-box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
+  box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
+}
+
+.addInput {
+  display: flex;
+  width: 100%;
+  font-size: 1.2rem;
+
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 1rem;
+  background: #151618;
+  -webkit-box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
+  box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+}
+
+/* .search button {
+  padding: 20px 40px;
+  border-radius: 0.5rem;
+  margin-left: 15px;
+  color: #a1a1a1;
+  font-family: var(--font-raleway);
+  font-weight: 900;
+  letter-spacing: 0.75px;
+  font-size: 1.25rem;
+  cursor: pointer;
+
+  background: #1f2123;
+  -webkit-box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
+  box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
+} */
+
+.empty h2 {
+  font-size: 1.25rem;
+  color: #f9d3b4;
+  font-family: var(--font-raleway);
+}
+
+.studentsDataInfo {
+  padding-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid white;
+}
+.studentsDataInfo h2 {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  background-color: #272b30;
+  border-radius: 0.5rem;
+  border: 1px solid silver;
+  color: white;
+}
+table {
+  border-collapse: collapse;
+}
+th {
+  color: white;
+}
+td {
+  color: white;
+}
+
+.studentsDataInfo td {
+  padding: 1rem;
+  border: 1px solid white;
+  padding-bottom: 0.5rem;
+}
+.studentsDataInfo tfoot {
+  /* padding:22 px; */
+  margin: 0px;
+  padding: 0px;
+}
+.studentsDataInfo th {
+  text-align: center;
+  border: 1px solid white;
+  padding: 0.5rem;
+  /* background-color: #272b30; */
+}
+
+.StudentsCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 90%;
+}
+.AddAndCancel {
+  text-align: center;
+}
+.AddAndCancel button {
+  font-family: cursive;
+  cursor: pointer;
+  background-color: #272b30;
+  border-color: black;
+  color: silver;
+  padding: 1.5rem 2rem; /* Adjusted for better padding */
+  border-radius: 0.625rem; /* Equivalent to 10px */
+  box-shadow: 0.0625rem 0.0625rem 0.0625rem 0.0625rem; /* Equivalent to 1px */
+  margin-top: 1rem; /* Equivalent to 10px */
+  margin-left: 3rem;
+}
+.editButton {
+  font-family: cursive;
+  cursor: pointer;
+  background-color: #272b30;
+  border-color: black;
+  color: silver;
+  padding: 1rem 1rem; /* Adjusted for better padding */
+  border-radius: 0.625rem; /* Equivalent to 10px */
+  box-shadow: 0.0625rem 0.0625rem 0.0625rem 0.0625rem; /* Equivalent to 1px */
+  margin: 1rem;
+}
+
+button:hover {
+  background-color: hsl(213, 10%, 10%);
+}
+.table {
+  width: 90%;
+  font-size: 2rem;
+  margin: 2rem;
+}
+.error {
+  margin-top: 1rem;
+  color: red;
+  font-size: 1rem;
+}
+.save {
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+  width: 2rem; /* Set the width and height to create a circle */
+  height: 2rem;
+  border-radius: 50%; /* Make the button a circle */
+  border: none;
+  background-color: #6ea8fe; /* Set the background color to blue */
+  cursor: pointer;
+  margin-right: 1.5rem;
+}
+
+.save svg {
+  color: white; /* Set the color of the check sign to contrast with the blue background */
+}
+.cancel {
+  align-items: center;
+  justify-content: center;
+  width: 2rem; /* Set the width and height to create a circle */
+  height: 2rem;
+  border-radius: 50%; /* Make the button a circle */
+  border: none;
+  background-color: red; /* Set the background color to red */
+  cursor: pointer;
+}
+th {
+  background-color: hsl(213, 10%, 17%);
+}
+.EditAndDelete {
+  padding: 0rem;
+  margin: 0rem auto;
+}
+.cancel .cancel-sign {
+  color: white;
+  flex-direction: row;
+}
+.studentsDataInfo td {
+  text-align: center;
+  padding: 1rem 0rem;
+  padding-bottom: 0.5rem;
+}
+
+.error {
+  margin-top: 0.5rem;
+  color: red;
+  font-size: 1rem;
+}
+
+
+/* Styles for even rows */
+tr:nth-child(even) {
+  background-color: #343a40; /* Alternate row background color */
+}
+
+/* Hover styles for rows */
+tr:hover {
+  background-color: #495057; /* Hover color for rows */
+}
+@media screen and (max-width: 600px) {
+  /* Styles for the search input */
+  .search {
+    width: 80%; /* Adjust width */
+    margin: 0.5rem auto; /* Center horizontally */
+    font-size: 1rem; /* Adjust font size */
+  }
+  .editButton {
+    width: 80%;
+    font-size: 0.6rem;
+    padding: 0.5rem;
+    margin: 0.1rem;
+    margin-top: 0.5rem;
+  }
+
+  /* Styles for the Add and Cancel buttons */
+  .AddAndCancel {
+    flex-direction: column; /* Stack buttons vertically */
+    margin-top: 1rem; /* Add some space between buttons */
+  }
+
+  /* Styles for the Add and Cancel buttons individually */
+  .AddAndCancel button {
+    width: 80%; /* Adjust width */
+    padding: 0.5rem;
+    margin: 0.5rem auto; /* Center horizontally and add space between buttons */
+  }
+  .addInput {
+    margin-left: 0.2rem;
+    width: 90%;
+
+    font-size: 0.5rem;
+    color: white;
+    padding: 0.5rem 0.5rem;
+    border-radius: 1rem;
+    background: #151618;
+    box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
+    transition: border-color 0.3s, box-shadow 0.3s; /* Add transition effect */
+  }
+
+  /* Add focus styles */
+  .addInput:focus {
+    border-color: #6ea8fe; /* Change border color on focus */
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 0 0.2rem rgba(110, 168, 254, 0.5); /* Add box shadow on focus */
+  }
+  /* Styles for the table */
+  .table {
+    width: 90%; /* Adjust width */
+    margin: 1rem auto; /* Center horizontally */
+    font-size: 0.8rem; /* Adjust font size */
+    overflow-x: auto; /* Add horizontal scroll if needed */
+  }
+
+  /* Styles for table cells */
+  th,
+  td {
+    padding: 0.5rem; /* Adjust padding */
+    padding-top: 0.5rem !important;
+    text-align: center; /* Center text */
+    margin: 0rem;
+  }
+
+  /* Styles for error messages */
+  .error {
+    margin-top: 0.5rem; /* Add some space */
+    font-size: 0.8rem; /* Adjust font size */
+  }
+
+  /* Styles for save and cancel buttons */
+  .save,
+  .cancel {
+    width: 60%; /* Adjust width */
+    height: auto; /* Allow height to adjust based on content */
+    margin: 0.5rem auto; /* Center horizontally and add space */
+  }
+
+  /* Additional styles for specific elements can be added here */
+}
