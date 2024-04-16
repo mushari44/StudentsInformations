@@ -15,12 +15,15 @@ function DropDown({ setShowEditStudent, fetchData }) {
     if (selected.value === "op1") {
       setShowAddStudent(true);
       setShowEditStudent(false);
+      fetchData();
     } else if (selected.value === "op2") {
       setShowAddStudent(false);
       setShowEditStudent(true);
+      fetchData();
     } else {
       setShowAddStudent(false);
       setShowEditStudent(false);
+      fetchData();
     }
   };
 

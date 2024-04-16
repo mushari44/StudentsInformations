@@ -8,12 +8,14 @@ function App() {
   const [showEditStudent, setShowEditStudent] = useState(false);
   const [editedStudent, setEditedStudent] = useState({});
   const [editRowId, setEditRowId] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetchData();
-  }, [studentsData]);
+  }, []);
 
   async function fetchData() {
+    setLoading(true);
     try {
       const response = await axios.get(
         "https://studentdataserver.onrender.com/students/getInfo"
@@ -21,6 +23,8 @@ function App() {
       setStudentsData(response.data);
     } catch (error) {
       console.log("error getting the students data " + error);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -94,114 +98,121 @@ function App() {
             setShowEditStudent={setShowEditStudent}
             fetchData={fetchData}
           />
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Student Name</th>
-                <th>Age</th>
-                <th>ID</th>
-                {showEditStudent && <th className="action">Action</th>}
-              </tr>
-            </thead>
-            <tbody>
-              {filteredStudents.map((student) => (
-                <tr key={student._id}>
-                  <td>
-                    {showEditStudent && editRowId === student._id ? (
-                      <input
-                        placeholder="please enter the new name"
-                        className="addInput"
-                        value={editedStudent.name}
-                        onChange={(e) =>
-                          setEditedStudent({
-                            ...editedStudent,
-                            name: e.target.value,
-                          })
-                        }
-                      />
-                    ) : (
-                      student.name
-                    )}
-                  </td>
-                  <td>
-                    {showEditStudent && editRowId === student._id ? (
-                      <input
-                        placeholder="please enter the new age"
-                        className="addInput"
-                        type="Number"
-                        value={editedStudent.age}
-                        onChange={(e) =>
-                          setEditedStudent({
-                            ...editedStudent,
-                            age: e.target.value,
-                          })
-                        }
-                      />
-                    ) : (
-                      student.age
-                    )}
-                  </td>
-                  <td>
-                    {showEditStudent && editRowId === student._id ? (
-                      <input
-                        value={editedStudent.Id}
-                        onChange={(e) =>
-                          setEditedStudent({
-                            ...editedStudent,
-                            Id: e.target.value,
-                          })
-                        }
-                        className="addInput"
-                        placeholder="please enter the new Id"
-                      />
-                    ) : (
-                      student.Id
-                    )}
-                  </td>
-                  {showEditStudent && (
+          {!loading ? (
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>Student Name</th>
+                  <th>Age</th>
+                  <th>ID</th>
+                  {showEditStudent && <th className="action">Action</th>}
+                </tr>
+              </thead>
+              <tbody>
+                {filteredStudents.map((student) => (
+                  <tr key={student._id}>
                     <td>
-                      {editRowId === student._id ? (
-                        <>
-                          <button onClick={saveEditedStudent} className="save">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="16"
-                              height="16"
-                              viewBox="0 0 16 16"
-                              fill="currentColor"
-                            >
-                              <path
-                                fillRule="evenodd"
-                                d="M6.46 10.52L3 7.06 4.47 5.6 6.47 7.58 11.53 2 13 3.47 6.46 10.52z"
-                              />
-                            </svg>
-                          </button>
-                          <button onClick={cancelEdit} className="cancel ">
-                            X
-                          </button>
-                        </>
+                      {showEditStudent && editRowId === student._id ? (
+                        <input
+                          placeholder="please enter the new name"
+                          className="addInput"
+                          value={editedStudent.name}
+                          onChange={(e) =>
+                            setEditedStudent({
+                              ...editedStudent,
+                              name: e.target.value,
+                            })
+                          }
+                        />
                       ) : (
-                        <div className="EditAndDelete">
-                          <button
-                            className="editButton"
-                            onClick={() => handleEditButton(student._id)}
-                          >
-                            Edit
-                          </button>
-                          <button
-                            className="editButton"
-                            onClick={() => handleDelete(student._id)}
-                          >
-                            Delete
-                          </button>
-                        </div>
+                        student.name
                       )}
                     </td>
-                  )}
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                    <td>
+                      {showEditStudent && editRowId === student._id ? (
+                        <input
+                          placeholder="please enter the new age"
+                          className="addInput"
+                          type="Number"
+                          value={editedStudent.age}
+                          onChange={(e) =>
+                            setEditedStudent({
+                              ...editedStudent,
+                              age: e.target.value,
+                            })
+                          }
+                        />
+                      ) : (
+                        student.age
+                      )}
+                    </td>
+                    <td>
+                      {showEditStudent && editRowId === student._id ? (
+                        <input
+                          value={editedStudent.Id}
+                          onChange={(e) =>
+                            setEditedStudent({
+                              ...editedStudent,
+                              Id: e.target.value,
+                            })
+                          }
+                          className="addInput"
+                          placeholder="please enter the new Id"
+                        />
+                      ) : (
+                        student.Id
+                      )}
+                    </td>
+                    {showEditStudent && (
+                      <td>
+                        {editRowId === student._id ? (
+                          <>
+                            <button
+                              onClick={saveEditedStudent}
+                              className="save"
+                            >
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                viewBox="0 0 16 16"
+                                fill="currentColor"
+                              >
+                                <path
+                                  fillRule="evenodd"
+                                  d="M6.46 10.52L3 7.06 4.47 5.6 6.47 7.58 11.53 2 13 3.47 6.46 10.52z"
+                                />
+                              </svg>
+                            </button>
+                            <button onClick={cancelEdit} className="cancel ">
+                              X
+                            </button>
+                          </>
+                        ) : (
+                          <div className="EditAndDelete">
+                            <button
+                              className="editButton"
+                              onClick={() => handleEditButton(student._id)}
+                            >
+                              Edit
+                            </button>
+                            <button
+                              className="editButton"
+                              onClick={() => handleDelete(student._id)}
+                            >
+                              Delete
+                            </button>
+                          </div>
+                        )}
+                      </td>
+                    )}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <p className="loading">Loading Students Informations...</p>
+          )}
         </div>
       </div>
     </div>

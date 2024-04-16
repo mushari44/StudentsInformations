@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-function AddStudent({ showAddStudent, setShowAddStudent, fetchData }) {
+export function AddStudent({ showAddStudent, setShowAddStudent, fetchData }) {
   const [studentName, setStudentName] = useState("");
   const [studentAge, setStudentAge] = useState("");
   const [studentId, setStudentId] = useState("");
@@ -48,7 +48,7 @@ function AddStudent({ showAddStudent, setShowAddStudent, fetchData }) {
         return;
       }
 
-      await axios.post(
+      const response = await axios.post(
         "https://studentdataserver.onrender.com/students/addStudent",
         {
           name: studentName,
@@ -135,5 +135,3 @@ function AddStudent({ showAddStudent, setShowAddStudent, fetchData }) {
     </div>
   );
 }
-
-export default AddStudent;
