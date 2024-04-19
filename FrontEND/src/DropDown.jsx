@@ -30,6 +30,7 @@ function DropDown({ setShowEditStudent, fetchData }) {
   return (
     <div className="Drop-down">
       <Select
+        isSearchable={false}
         options={options}
         placeholder="Select an option"
         onChange={handleOptionChange}

@@ -20,7 +20,7 @@ function App() {
       // "https://studentdataserver.onrender.com/students/getInfo";
 
       const response = await axios.get(
-        "https://student-server.vercel.app/students/getInfo"
+        "https://studentdataserver.onrender.com/students/getInfo"
       );
       setStudentsData(response.data);
     } catch (error) {
@@ -52,7 +52,7 @@ function App() {
   async function saveEditedStudent() {
     try {
       await axios.put(
-        `https://student-server.vercel.app/students/updateInfo/${editedStudent._id}`,
+        `https://studentdataserver.onrender.com/students/updateInfo/${editedStudent._id}`,
         editedStudent
       );
       fetchData();
@@ -72,7 +72,7 @@ function App() {
   async function handleDelete(id) {
     try {
       await axios.delete(
-        `https://student-server.vercel.app/students/DeleteInfo/${id}`
+        `https://studentdataserver.onrender.com/students/DeleteInfo/${id}`
       );
       fetchData();
       console.log("Student Info deleted");

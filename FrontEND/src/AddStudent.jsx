@@ -49,7 +49,7 @@ function AddStudent({ showAddStudent, setShowAddStudent, fetchData }) {
       }
 
       await axios.post(
-        "https://student-server.vercel.app/students/addStudent",
+        "https://studentdataserver.onrender.com/students/addStudent",
         {
           name: studentName,
           age: studentAge,
