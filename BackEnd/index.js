@@ -2,14 +2,17 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-mongoose.connect(process.env.MONGODB_URI) ||
-  "mongodb+srv://musharizh56:admin@cluster0.clvs4os.mongodb.net/StudentsInfo";
-    .then(() => {
-      console.log("Connected to MongoDB");
-    })
-    .catch((error) => {
-      console.error("Error connecting to MongoDB:", error);
-    });
+mongoose
+  .connect(
+    process.env.MONGODB_URI ||
+      "mongodb+srv://musharizh56:admin@cluster0.clvs4os.mongodb.net/StudentsInfo"
+  )
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch((error) => {
+    console.error("Error connecting to MongoDB:", error);
+  });
 let schema = new mongoose.Schema({ name: String, age: Number, Id: String });
 const Students = mongoose.model("students information", schema);
 
