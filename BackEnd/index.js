@@ -2,14 +2,14 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-mongoose
-  .connect(process.env.MONGODB_URI)
-  .then(() => {
-    console.log("Connected to MongoDB");
-  })
-  .catch((error) => {
-    console.error("Error connecting to MongoDB:", error);
-  });
+mongoose.connect(process.env.MONGODB_URI) ||
+  "mongodb+srv://musharizh56:admin@cluster0.clvs4os.mongodb.net/StudentsInfo";
+    .then(() => {
+      console.log("Connected to MongoDB");
+    })
+    .catch((error) => {
+      console.error("Error connecting to MongoDB:", error);
+    });
 let schema = new mongoose.Schema({ name: String, age: Number, Id: String });
 const Students = mongoose.model("students information", schema);
 
@@ -18,10 +18,9 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/students/getInfo", (req, res) => {
-  res.send("students")
-  // Students.find({}).then((studentInfo) => {
-  //   res.send(studentInfo);
-  // });
+  Students.find({}).then((studentInfo) => {
+    res.send(studentInfo);
+  });
 });
 
 app.post("/students/addStudent", async (req, res) => {
@@ -77,7 +76,6 @@ app.get("/", (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT,  () => {
+app.listen(PORT, () => {
   console.log("Server started on port", PORT);
 });
-
