@@ -1,4 +1,4 @@
-const express = require("express");
+// const express = require("express");
 // const mongoose = require("mongoose");
 // const cors = require("cors");
 
@@ -13,9 +13,9 @@ const express = require("express");
 // let schema = new mongoose.Schema({ name: String, age: Number, Id: String });
 // const Students = mongoose.model("students information", schema);
 
-const app = express();
+// const app = express();
 // app.use(cors());
-app.use(express.json());
+// app.use(express.json());
 
 // app.get("/students/getInfo", (req, res) => {
 //   Students.find({}).then((studentInfo) => {
@@ -70,12 +70,26 @@ app.use(express.json());
 //     });
 // });
 
-app.get("/", (req, res) => {
-  res.send("Connected to the server");
-});
+// app.get("/", (req, res) => {
+//   res.send("Connected to the server");
+// });
 
+// const PORT = process.env.PORT || 3000;
+
+// app.listen(PORT,  () => {
+//   console.log("Server started on port", PORT);
+// });
+const express = require("express");
+const app = express();
+app.use(express.json());
+app.get("/", (req, res) => {
+  res.send("done ");
+});
+app.get("/bro", (req, res) => {
+  res.send("got it  ");
+});
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT,  () => {
-  console.log("Server started on port", PORT);
+app.listen(PORT, () => {
+  console.log("Serverasdt", PORT);
 });
