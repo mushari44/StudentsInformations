@@ -18,9 +18,10 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/students/getInfo", (req, res) => {
-  Students.find({}).then((studentInfo) => {
-    res.send(studentInfo);
-  });
+  res.send("students")
+  // Students.find({}).then((studentInfo) => {
+  //   res.send(studentInfo);
+  // });
 });
 
 app.post("/students/addStudent", async (req, res) => {
