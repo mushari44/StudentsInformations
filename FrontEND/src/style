@@ -351,4 +351,5 @@ tr:hover {
     margin: 0.5rem auto; /* Center horizontally and add space */
   }
 
+  /* Additional styles for specific elements can be added here */
 }

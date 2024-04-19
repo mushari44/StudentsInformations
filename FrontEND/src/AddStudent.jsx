@@ -49,7 +49,7 @@ function AddStudent({ showAddStudent, setShowAddStudent, fetchData }) {
       }
 
       await axios.post(
-        "https://studentdataserver.onrender.com/students/addStudent",
+        "https://studentdataserver.netlify.app/students/addStudent",
         {
           name: studentName,
           age: studentAge,

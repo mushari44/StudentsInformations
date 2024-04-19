@@ -17,8 +17,10 @@ function App() {
   async function fetchData() {
     setLoading(true);
     try {
+      // "https://studentdataserver.onrender.com/students/getInfo";
+
       const response = await axios.get(
-        "https://studentdataserver.onrender.com/students/getInfo"
+        "https://studentdataserver.netlify.app/students/getInfo"
       );
       setStudentsData(response.data);
     } catch (error) {
@@ -50,7 +52,7 @@ function App() {
   async function saveEditedStudent() {
     try {
       await axios.put(
-        `https://studentdataserver.onrender.com/students/updateInfo/${editedStudent._id}`,
+        `https://studentdataserver.netlify.app/students/updateInfo/${editedStudent._id}`,
         editedStudent
       );
       fetchData();
@@ -70,7 +72,7 @@ function App() {
   async function handleDelete(id) {
     try {
       await axios.delete(
-        `https://studentdataserver.onrender.com/students/DeleteInfo/${id}`
+        `https://studentdataserver.netlify.app/students/DeleteInfo/${id}`
       );
       fetchData();
       console.log("Student Info deleted");
