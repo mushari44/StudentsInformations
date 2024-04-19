@@ -49,7 +49,7 @@ function AddStudent({ showAddStudent, setShowAddStudent, fetchData }) {
       }
 
       await axios.post(
-        "https://studentdataserver.netlify.app/students/addStudent",
+        "https://student-server.vercel.app/students/addStudent",
         {
           name: studentName,
           age: studentAge,

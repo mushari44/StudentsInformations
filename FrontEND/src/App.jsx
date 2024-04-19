@@ -20,7 +20,7 @@ function App() {
       // "https://studentdataserver.onrender.com/students/getInfo";
 
       const response = await axios.get(
-        "https://studentdataserver.netlify.app/students/getInfo"
+        "https://student-server.vercel.app/students/getInfo"
       );
       setStudentsData(response.data);
     } catch (error) {
@@ -52,7 +52,7 @@ function App() {
   async function saveEditedStudent() {
     try {
       await axios.put(
-        `https://studentdataserver.netlify.app/students/updateInfo/${editedStudent._id}`,
+        `https://student-server.vercel.app/students/updateInfo/${editedStudent._id}`,
         editedStudent
       );
       fetchData();
@@ -72,7 +72,7 @@ function App() {
   async function handleDelete(id) {
     try {
       await axios.delete(
-        `https://studentdataserver.netlify.app/students/DeleteInfo/${id}`
+        `https://student-server.vercel.app/students/DeleteInfo/${id}`
       );
       fetchData();
       console.log("Student Info deleted");
