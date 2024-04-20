@@ -74,11 +74,11 @@ app.delete("/students/DeleteInfo/:id", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Connected to the server");
+  res.send("Welcome to the server");
 });
 
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log("Server started on port", PORT);
+  console.log("Server started on port ", PORT);
 });
