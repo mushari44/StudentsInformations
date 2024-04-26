@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import DropDown from "./DropDown";
-
+import LightDarkMode from "./light-dark-mode/index.jsx";
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [studentsData, setStudentsData] = useState([]);
@@ -20,7 +20,7 @@ function App() {
       // "https://studentdataserver.onrender.com/students/getInfo";
 
       const response = await axios.get(
-        "https://studentdataserver.onrender.com/students/getInfo"
+        "https://student-server.vercel.app/students/getInfo"
       );
       setStudentsData(response.data);
     } catch (error) {
@@ -52,7 +52,7 @@ function App() {
   async function saveEditedStudent() {
     try {
       await axios.put(
-        `https://studentdataserver.onrender.com/students/updateInfo/${editedStudent._id}`,
+        `https://student-server.vercel.app/students/updateInfo/${editedStudent._id}`,
         editedStudent
       );
       fetchData();
@@ -72,7 +72,7 @@ function App() {
   async function handleDelete(id) {
     try {
       await axios.delete(
-        `https://studentdataserver.onrender.com/students/DeleteInfo/${id}`
+        `https://student-server.vercel.app/students/DeleteInfo/${id}`
       );
       fetchData();
       console.log("Student Info deleted");
@@ -84,7 +84,10 @@ function App() {
 
   return (
     <div className="app">
+      <LightDarkMode mode="dark"></LightDarkMode>
+
       <h1>Student Data</h1>
+
       <div className="studentsDataInfo">
         <h2>Students Information</h2>
         <div className="StudentsCard">
