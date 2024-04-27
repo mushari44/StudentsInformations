@@ -12,11 +12,6 @@
   --font-roboto: "Roboto Slab", serif;
   --font-raleway: "Raleway", sans-serif;
 }
-
-body {
-  font-family: var(--font-roboto);
-}
-
 .app {
   padding: 1rem;
   margin: 1rem;
@@ -26,6 +21,9 @@ body {
   flex-direction: column;
 }
 
+.StudentsTableContainer {
+  width: 100%;
+}
 .app h2 {
   display: flex;
   display: inline-block;
@@ -42,10 +40,9 @@ h1 {
 }
 
 .search {
-  width: 50%;
+  width: 40%;
   margin: 1% 2rem;
   font-size: 1.5rem;
-  display: flex;
   padding: 0.5rem 1rem;
   border-radius: 3rem;
   -webkit-box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
@@ -76,6 +73,12 @@ h1 {
   border-radius: 0.5rem;
   border: 1px solid var(--text-primary);
 }
+.StudentsAddCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+}
 .studentsDataInfo h2 {
   padding: 1rem;
   display: flex;
@@ -85,6 +88,14 @@ h1 {
   width: 100%;
   border-radius: 0.5rem;
   border: 1px solid var(--text-primary);
+
+  font-size: 3rem;
+  letter-spacing: 0.2rem;
+  background: var(--title-text-color);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
 }
 table {
   border-collapse: collapse;
@@ -114,7 +125,10 @@ table {
   width: 90%;
 }
 .AddAndCancel {
-  text-align: center;
+  display: flex;
+  width: 70%;
+  align-items: center;
+  justify-content: center;
 }
 .AddAndCancel button {
   font-family: Bebas Neue;
@@ -235,12 +249,13 @@ tr:hover {
 .light-dark-mode {
   display: flex;
   position: absolute; /* Makes it move to the absolute position relative to the nearest positioned ancestor */
-  top: 1rem; /* Adjusts the distance from the top of the viewport */
-  left: 1rem; /* Adjusts the distance from the left of the viewport */
+  top: 2rem; /* Adjusts the distance from the top of the viewport */
+  left: 3rem; /* Adjusts the distance from the left of the viewport */
   align-items: center; /* Centers elements vertically within the container */
   user-select: none;
   font-size: 1rem;
 }
+
 .theme-mode:hover {
   cursor: pointer;
   opacity: 0.4;
@@ -264,32 +279,39 @@ tr:hover {
   }
   /* Styles for the search input */
   .light-dark-mode {
-    top: 3rem; /* Adjusts the distance from the top of the viewport */
+    top: 2rem; /* Adjusts the distance from the top of the viewport */
     left: 0.4rem; /* Adjusts the distance from the left of the viewport */
-    font-size: 0.7rem;
+    /* font-size: 0.8em; */
     display: flex;
     position: absolute; /* Makes it move to the absolute position relative to the nearest positioned ancestor */
     height: auto;
   }
+  .themeText {
+    display: flex;
+    position: relative;
+    bottom: 1.5rem;
+    left: 5rem;
+  }
+
   .theme-mode {
     bottom: 1rem;
-    width: 40%;
+    width: 25%;
     display: flex;
     position: absolute; /* Makes it move to the absolute position relative to the nearest positioned ancestor */
     height: auto;
   }
   .theme-mode-on {
     bottom: 1rem;
-    left: 3rem;
-    width: 40%;
+    left: 2rem;
+    width: 25%;
     display: flex;
     position: absolute; /* Makes it move to the absolute position relative to the nearest positioned ancestor */
     height: auto;
   }
   .theme-mode-off {
     bottom: 1rem;
-    left: 3rem;
-    width: 40%;
+    left: 2rem;
+    width: 25%;
     display: flex;
     position: absolute; /* Makes it move to the absolute position relative to the nearest positioned ancestor */
     height: auto;
@@ -303,10 +325,12 @@ tr:hover {
     text-align: center;
   }
   .search {
-    width: 80%; /* Adjust width */
+    display: flex;
+    width: 12rem; /* Adjust width */
     margin: 0.5rem auto; /* Center horizontally */
-    font-size: 1rem; /* Adjust font size */
+    font-size: 0.8rem;
   }
+
   .editButton {
     width: 80%;
     font-size: 0.6rem;
@@ -376,7 +400,8 @@ tr:hover {
   h1 {
     font-size: 2rem;
   }
-  h2 {
+
+  .studentsDataInfo h2 {
     font-size: 1rem;
   }
 }
@@ -409,6 +434,7 @@ tr:hover {
 body {
   background-color: var(--background);
   color: var(--text-primary);
+  font-family: var(--font-roboto);
 }
 button {
   background-color: var(--button-bg);

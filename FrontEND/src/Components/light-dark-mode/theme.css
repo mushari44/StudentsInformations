@@ -1,10 +1,9 @@
-:root {
+/* :root {
   --background: white;
   --text-primary: black;
   --button-bg: black;
   --button-text: white;
 }
-
 [data-theme="dark"] {
   --background: black;
   --text-primary: white;
@@ -38,4 +37,4 @@
 
 .theme-mode:hover {
   opacity: 0.8;
-}
+} */

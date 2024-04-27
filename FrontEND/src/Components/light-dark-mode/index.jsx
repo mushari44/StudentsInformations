@@ -2,7 +2,6 @@ import useLocalStorage from "./useLocalStorage";
 import { MdDarkMode } from "react-icons/md";
 import { IoToggleSharp } from "react-icons/io5";
 import { MdOutlineToggleOff } from "react-icons/md";
-import React from "react";
 import { useEffect } from "react";
 export default function LightDarkMode() {
   const [theme, setTheme] = useLocalStorage("them", "dark");
@@ -10,7 +9,7 @@ export default function LightDarkMode() {
     const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme);
   }
-  React.useEffect(() => {
+  useEffect(() => {
     document.body.setAttribute("data-theme", theme);
   }, [theme]); // Re-run when theme changes
   return (
@@ -21,15 +20,19 @@ export default function LightDarkMode() {
           className="theme-mode"
         ></MdDarkMode>
         {theme && theme === "dark" ? (
-          <IoToggleSharp onClick={handleToggleTheme} className="theme-mode-on" />
+          <IoToggleSharp
+            onClick={handleToggleTheme}
+            className="theme-mode-on"
+          />
         ) : (
           <MdOutlineToggleOff
             onClick={handleToggleTheme}
             className="theme-mode-off"
-            s
           />
         )}
-        <p>theme mode : {theme}</p>
+        <div className="themeText">
+          <p>theme mode : {theme}</p>
+        </div>
       </div>
     </div>
   );

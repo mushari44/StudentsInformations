@@ -1,50 +1,57 @@
 import { useState } from "react";
 import axios from "axios";
+import StudentsTable from "./StudentsTable";
+import LightDarkMode from "./light-dark-mode";
+import { useNavigate } from "react-router-dom";
+import DropDown from "./DropDown";
 
-function AddStudent({ showAddStudent, setShowAddStudent, fetchData }) {
+function AddStudent() {
   const [studentName, setStudentName] = useState("");
   const [studentAge, setStudentAge] = useState("");
   const [studentId, setStudentId] = useState("");
-  const [ageError, setAgeError] = useState("");
-  const [nameError, setNameError] = useState("");
-  const [idError, setIdError] = useState("");
+  const [inputError, setInputError] = useState(null); 
+  const navigate = useNavigate();
+  const [refresh, setRefresh] = useState(0);
 
-  // Function to handle student name change
   const handleNameChange = (event) => {
     setStudentName(event.target.value);
-    setNameError("");
+    setInputError(null); 
   };
 
-  // Function to handle student age change
   const handleAgeChange = (event) => {
     setStudentAge(event.target.value);
-    setAgeError("");
+    setInputError(null); // Clear input error message
   };
 
-  // Function to handle student ID change
   const handleIdChange = (event) => {
     setStudentId(event.target.value);
-    setIdError("");
+    setInputError(null); // Clear input error message
   };
 
-  // Function to add a new student
   const handleAddStudent = async () => {
     try {
-      if (/\d/.test(studentName) || !studentName.trim()) {
-        setNameError("Name cannot contain numbers");
+      if (
+        /\d/.test(studentName) || // Check if name contains numbers
+        !studentName.trim() // Check if name is empty
+      ) {
+        setInputError("Name cannot contain numbers");
         return;
       }
 
-      if (!studentAge || isNaN(studentAge) || studentAge <= 0) {
-        setAgeError("Please enter a valid age");
+      if (
+        !studentAge ||
+        isNaN(studentAge) || // Check if age is not a number
+        studentAge <= 0 // Check if age is not positive
+      ) {
+        setInputError("Please enter a valid age");
         setTimeout(() => {
-          setAgeError("");
+          setInputError(null); // Clear input error message after 1.5 seconds
         }, 1500);
         return;
       }
 
       if (!/^\d+$/.test(studentId.trim())) {
-        setIdError("ID must contain only numbers");
+        setInputError("ID must contain only numbers");
         return;
       }
 
@@ -56,10 +63,7 @@ function AddStudent({ showAddStudent, setShowAddStudent, fetchData }) {
           Id: studentId,
         }
       );
-
-      // Clear input fields after adding student
-      fetchData();
-
+      setRefresh((c) => c + 1);
       setStudentName("");
       setStudentAge("");
       setStudentId("");
@@ -69,21 +73,23 @@ function AddStudent({ showAddStudent, setShowAddStudent, fetchData }) {
     }
   };
 
-  // Function to handle cancel button click
   const handleCancel = () => {
-    setShowAddStudent(false);
+    navigate("/");
   };
 
   return (
-    <div className="AddStudent">
-      {showAddStudent && (
+    <>
+      <div className="app">
         <div className="studentsDataInfo">
           <h2>Students Information</h2>
+          <LightDarkMode />
+          <DropDown />
           <div className="StudentsAddCard">
             <div className="AddAndCancel">
               <button onClick={handleAddStudent}>Add Student</button>
               <button onClick={handleCancel}>Cancel</button>
             </div>
+            {inputError && <div className="error">{inputError}</div>}
 
             <table className="table">
               <thead>
@@ -102,7 +108,6 @@ function AddStudent({ showAddStudent, setShowAddStudent, fetchData }) {
                       value={studentName}
                       placeholder="Enter name"
                     />
-                    {nameError && <div className="error">{nameError}</div>}
                   </td>
 
                   <td className="addStudentInputTable">
@@ -113,7 +118,6 @@ function AddStudent({ showAddStudent, setShowAddStudent, fetchData }) {
                       placeholder="Enter age"
                       type="number"
                     />
-                    {ageError && <div className="error">{ageError}</div>}
                   </td>
 
                   <td className="addStudentInputTable">
@@ -124,15 +128,15 @@ function AddStudent({ showAddStudent, setShowAddStudent, fetchData }) {
                       placeholder="Enter ID"
                       type="text"
                     />
-                    {idError && <div className="error"> {idError}</div>}
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
+          <StudentsTable refresh={refresh} />
         </div>
-      )}
-    </div>
+      </div>
+    </>
   );
 }
 
